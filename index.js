@@ -22,11 +22,12 @@ class M extends Utils {
     this.checkTplDir()
     const cmdArr = fs.readdirSync(path.resolve(__dirname, cmdDirName)).map(item => item.split('.')[0])
     const cmdArrAbb = abbrev(cmdArr) // 支持简写
-    if (!cmdArrAbb[process.argv[2]]) { // 未提供命令，或者提供了错误的命令，则报错
+    const realCmd = cmdArrAbb[process.argv[2]]
+    if (!realCmd) { // 未提供命令，或者提供了错误的命令，则报错
       this.console('命令错误，请使用：' + JSON.stringify(cmdArr))
       process.exit(1)
     }
-    const cmd = require(path.resolve(__dirname, cmdDirName, process.argv[2]))
+    const cmd = require(path.resolve(__dirname, cmdDirName, realCmd))
     // this.checkCliUpdate() // 不主动检查更新，以加快执行速度
     cmd.call(this)
   }
