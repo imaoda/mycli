@@ -1,7 +1,7 @@
 {
   "name": "maoda",
-  "version": "1.0.6",
-  "description": "maoda's cli",
+  "version": "2.0.0",
+  "description": "maoda's personal cli",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
