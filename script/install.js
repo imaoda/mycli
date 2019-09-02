@@ -3,8 +3,6 @@
  * 模板仓库前缀 gen-
  */
 
-const execSync = require('child_process').execSync
-
 module.exports = async function (pkgName) {
   pkgName = pkgName || process.argv[3]
   if (!pkgName) {
@@ -19,7 +17,7 @@ module.exports = async function (pkgName) {
   }
   this.console(`正在安装最新版的 ${pkgName} ...`)
   try {
-    execSync(`npm i ${pkgName}@latest -S --registry=https://registry.npm.taobao.org`, { cwd: this.dir.tpl })
+    this.execSync(`npm i ${pkgName}@latest -S --registry=https://registry.npm.taobao.org`, { cwd: this.dir.tpl })
     this.console(`升级完成`, 'green')
   } catch (e) {
     this.console(`安装失败，请检查包名称是否正确 ${pkgName}`, 'red')

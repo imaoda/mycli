@@ -14,16 +14,16 @@ module.exports = async function () {
   if (tpl && listMap[tpl]) {
     const realTpl = listMap[tpl]
     const filePath = await this.fetch(`https://bapi.imaoda.com/npm/down/${realTpl}?psw=${password}`).then(i => i.text())
-    exec(`wget ${filePath} && tar -zxf repo.tar.gz && rm repo.tar.gz`)
+    this.execSync(`wget ${filePath} && tar -zxf repo.tar.gz && rm repo.tar.gz`)
   }
   if (!tpl) {
     const answer = await this.inquirer.prompt([{
       type: 'list',
-      choices: tpl,
+      choices: list,
       name: 'tpl',
       message: '请选择一个模板',
     }])
     const filePath = await this.fetch(`https://bapi.imaoda.com/npm/down/${answer.tpl}?psw=${password}`).then(i => i.text())
-    exec(`wget ${filePath} && tar -zxf repo.tar.gz && rm repo.tar.gz`)
+    this.execSync(`wget ${filePath} && tar -zxf repo.tar.gz && rm repo.tar.gz`)
   }
 }

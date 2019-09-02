@@ -44,6 +44,7 @@ class M extends Utils {
     this.inquirer = inquirer
     this.fetch = fetch
     this.abbrev = abbrev
+    this.execSync = execSync
   }
   checkCliUpdate() {
     const pkgName = pkg.name
