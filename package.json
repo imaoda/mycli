@@ -1,0 +1,25 @@
+{
+  "name": "maoda",
+  "version": "1.0.6",
+  "description": "maoda's cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "maoda": "bin/maoda"
+  },
+  "author": "wangyongfeng",
+  "license": "MIT",
+  "dependencies": {
+    "abbrev": "^1.1.1",
+    "axios": "^0.18.0",
+    "chalk": "^2.4.2",
+    "import-from": "^3.0.0",
+    "inquirer": "^7.0.0",
+    "minimist": "^1.2.0",
+    "node-fetch": "^2.6.0",
+    "resolve-from": "^5.0.0",
+    "yeoman-environment": "^2.4.0"
+  }
+}
