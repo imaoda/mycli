@@ -1,6 +1,6 @@
 {
   "name": "maoda",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "maoda's personal cli",
   "main": "index.js",
   "scripts": {

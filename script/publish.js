@@ -2,6 +2,11 @@
 /**
  * 发布云服务器
  */
+function extractUrl(data) {
+  data = data + '';
+  const matches = data.match(/http.+$/)
+  return matches ? matches[0]: ''
+}
 
 module.exports = async function () {
   const password = await this.getPasswordAssure()
@@ -20,7 +25,7 @@ module.exports = async function () {
   }
   const data = this.execSync(`tar -zcf dist.tar.gz dist && curl -X POST --data-binary @dist.tar.gz ${url} && rm -f dist.tar.gz`)
   if (data.indexOf('已有') !== 0) {
-    require("qrcode-terminal").generate(data);
+    require("qrcode-terminal").generate(extractUrl(data));
     this.console(data)
   }
   else {
@@ -32,7 +37,7 @@ module.exports = async function () {
     }])
     if (answer.force == '覆盖') {
       const data = this.execSync(`tar -zcf dist.tar.gz dist && curl -X POST --data-binary @dist.tar.gz ${url + '\\&force=1'} && rm -f dist.tar.gz`)
-      require("qrcode-terminal").generate(data);
+      require("qrcode-terminal").generate(extractUrl(data));
       this.console(data)
     }
   }
