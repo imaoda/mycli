@@ -1,6 +1,6 @@
 {
   "name": "maoda",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "maoda's personal cli",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
     "minimist": "^1.2.0",
     "node-fetch": "^2.6.0",
     "resolve-from": "^5.0.0",
-    "yeoman-environment": "^2.4.0"
+    "yeoman-environment": "^2.4.0",
+    "qrcode-terminal": "^0.12.0"
   }
 }

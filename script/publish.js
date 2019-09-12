@@ -19,8 +19,10 @@ module.exports = async function () {
     process.exit(1)
   }
   const data = this.execSync(`tar -zcf dist.tar.gz dist && curl -X POST --data-binary @dist.tar.gz ${url} && rm -f dist.tar.gz`)
-  if (data.indexOf('已有') !== 0)
+  if (data.indexOf('已有') !== 0) {
+    require("qrcode-terminal").generate(data);
     this.console(data)
+  }
   else {
     const answer = await this.inquirer.prompt([{
       type: 'list',
@@ -30,6 +32,7 @@ module.exports = async function () {
     }])
     if (answer.force == '覆盖') {
       const data = this.execSync(`tar -zcf dist.tar.gz dist && curl -X POST --data-binary @dist.tar.gz ${url + '\\&force=1'} && rm -f dist.tar.gz`)
+      require("qrcode-terminal").generate(data);
       this.console(data)
     }
   }
